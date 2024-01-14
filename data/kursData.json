@@ -1,0 +1,40 @@
+{
+  "kursData": [
+    {
+      "kursId": 1,
+      "kursTitel": "JavaScript",
+      "kursLangd": "50 veckor",
+      "kursUpplagg": "På plats/Distans",
+      "kursBild": "kurs1.webp",
+      "kursStart": "2024-02-01",
+      "beskrivning": "Allt om JavaScript"
+    },
+    {
+      "kursId": 2,
+      "kursTitel": "Solidity",
+      "kursLangd": "50 veckor",
+      "kursUpplagg": "På plats/Distans",
+      "kursBild": "kurs2.webp",
+      "kursStart": "2025-02-01",
+      "beskrivning": "Allt om Solidity"
+    },
+    {
+      "kursId": 3,
+      "kursTitel": "HTML",
+      "kursLangd": "50 veckor",
+      "kursUpplagg": "Distans",
+      "kursBild": "kurs3.webp",
+      "kursStart": "2026-02-01",
+      "beskrivning": "Allt om HTML"
+    },
+    {
+      "kursId": 4,
+      "kursTitel": "CSS",
+      "kursLangd": "50 veckor",
+      "kursUpplagg": "Distans",
+      "kursBild": "kurs4.webp",
+      "kursStart": "2027-02-01",
+      "beskrivning": "Allt om CSS"
+    }
+  ]
+}
