@@ -1,0 +1,54 @@
+{
+  "kursData": [
+    {
+      "id": 1,
+      "kursTitel": "JavaScript",
+      "kursDagar": 100,
+      "kursUpplagg": "På plats/Distans",
+      "kursBild": "kurs1.webp",
+      "kursStart": "2024-02-01",
+      "beskrivning": "Allt om JavaScript"
+    },
+    {
+      "id": 2,
+      "kursTitel": "Solidity",
+      "kursDagar": 110,
+      "kursUpplagg": "På plats/Distans",
+      "kursBild": "kurs2.webp",
+      "kursStart": "2025-02-01",
+      "beskrivning": "Allt om Solidity"
+    },
+    {
+      "id": 3,
+      "kursTitel": "HTML",
+      "kursDagar": 52,
+      "kursUpplagg": "Distans",
+      "kursBild": "kurs3.webp",
+      "kursStart": "2026-02-01",
+      "beskrivning": "Allt om HTML"
+    },
+    {
+      "id": 4,
+      "kursTitel": "CSS",
+      "kursDagar": 64,
+      "kursUpplagg": "Distans",
+      "kursBild": "kurs4.webp",
+      "kursStart": "2027-02-01",
+      "beskrivning": "Allt om CSS"
+    }
+  ],
+  "userData": [
+    {
+      "id": 1,
+      "namn": "Richard",
+      "efterNamn": "Harris",
+      "adress": "Boulevard 12",
+      "postNummer": 12345,
+      "stad": "Hollywood",
+      "epost": "aurelius@gladiator.com",
+      "passWord": "hejsan",
+      "telefon": "+112345678",
+      "bokningar": []
+    }
+  ]
+}

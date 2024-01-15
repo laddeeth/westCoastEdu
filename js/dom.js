@@ -1,7 +1,12 @@
+const imgURL = '/img/';
+
 const drawHeader = () => {
   let links = [
     { href: '/', text: 'Start' },
-    { href: '/kurser.html', text: 'Kurser' },
+    {
+      href: '/kurser.html',
+      text: 'Kurser',
+    },
   ];
   let header = document.querySelector('header');
   header.append(
@@ -59,4 +64,26 @@ const createSpan = (text) => {
   return span;
 };
 
-export { drawHeader, drawFooter };
+const createDiv = () => {
+  return document.createElement('div');
+};
+
+const createImg = (imgData) => {
+  let img = document.createElement('img');
+  for (const [key, value] of Object.entries(imgData)) {
+    img.setAttribute(key, value);
+  }
+  clg;
+};
+
+const createKursCard = (kurs) => {
+  let div = createDiv();
+  createImg({
+    src: kurs.kursBild,
+    alt: kurs.kursTitel,
+    width: 100,
+    height: 100,
+  });
+};
+
+export { drawHeader, drawFooter, createKursCard };
