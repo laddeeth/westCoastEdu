@@ -84,6 +84,7 @@ const createImg = (imgData) => {
 
 const createKursCard = (kurs) => {
   let div = createDiv();
+  div.className = 'kurser';
   div.append(
     createImg({
       src: imgURL + kurs.kursBild,
@@ -94,7 +95,38 @@ const createKursCard = (kurs) => {
     createHeaderThree(kurs.kursTitel),
     createParagraph(kurs.beskrivning)
   );
+  div.addEventListener('click', () => {
+    location.href = `./kurser.html?id=${kurs.id}`;
+  });
   return div;
 };
 
-export { drawHeader, drawFooter, createKursCard };
+const createKursPage = (kurs) => {
+  let div = createDiv();
+  let fa = createFontAwesome(['fa-solid', 'fa-arrow-left']);
+  let span = createSpan('');
+  span.append(fa, ' Tillbaka till kurser');
+  span.addEventListener('click', () => {
+    location.href = './kurser.html';
+  });
+  div.className = 'kurs';
+
+  let div2 = createDiv();
+  div2.append(
+    createHeaderThree(kurs.kursTitel),
+    createParagraph(kurs.djupareBeskrivning)
+  );
+  div.append(
+    span,
+    createImg({
+      src: imgURL + kurs.kursBild,
+      alt: kurs.kursTitel,
+      width: 100,
+      height: 100,
+    }),
+    div2
+  );
+  return div;
+};
+
+export { drawHeader, drawFooter, createKursCard, createKursPage };

@@ -7,7 +7,8 @@
       "kursUpplagg": "På plats/Distans",
       "kursBild": "kurs1.webp",
       "kursStart": "2024-02-01",
-      "beskrivning": "Allt om JavaScript"
+      "beskrivning": "Allt om JavaScript",
+      "djupareBeskrivning": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..."
     },
     {
       "id": 2,
@@ -16,7 +17,8 @@
       "kursUpplagg": "På plats/Distans",
       "kursBild": "kurs2.webp",
       "kursStart": "2025-02-01",
-      "beskrivning": "Allt om Solidity"
+      "beskrivning": "Allt om Solidity",
+      "djupareBeskrivning": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..."
     },
     {
       "id": 3,
@@ -25,7 +27,8 @@
       "kursUpplagg": "Distans",
       "kursBild": "kurs3.webp",
       "kursStart": "2026-02-01",
-      "beskrivning": "Allt om HTML"
+      "beskrivning": "Allt om HTML",
+      "djupareBeskrivning": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..."
     },
     {
       "id": 4,
@@ -34,7 +37,8 @@
       "kursUpplagg": "Distans",
       "kursBild": "kurs4.webp",
       "kursStart": "2027-02-01",
-      "beskrivning": "Allt om CSS"
+      "beskrivning": "Allt om CSS",
+      "djupareBeskrivning": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..."
     }
   ],
   "userData": [

@@ -1,13 +1,20 @@
-import { getAll } from './fetch.js';
-import { createKursCard } from './dom.js';
+import { getAll, getCourse } from './fetch.js';
+import { createKursCard, createKursPage } from './dom.js';
 
 const initPage = async () => {
-  const kurser = await getAll('http://localhost:3000/kursData');
+  const searchParams = new URLSearchParams(window.location.search);
   const main = document.querySelector('main');
 
-  kurser.forEach((kurs) => {
-    main.append(createKursCard(kurs));
-  });
+  if (searchParams.has('id')) {
+    const kurs = await getCourse(searchParams.get('id'));
+    main.append(createKursPage(kurs));
+  } else {
+    const kurser = await getAll();
+
+    kurser.forEach((kurs) => {
+      main.append(createKursCard(kurs));
+    });
+  }
 };
 
 document.addEventListener('DOMContentLoaded', initPage);

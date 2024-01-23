@@ -81,3 +81,50 @@ footer {
   background-color: $herobackground;
   padding: 1rem;
 }
+
+#kurser {
+  flex-direction: column;
+  padding-top: 4%;
+  align-items: center;
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .kurser {
+    background-color: rgba(0, 0, 0, 0.8);
+    width: fit-content;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    img {
+      border-radius: 1rem 1rem 0 0;
+      width: 60vw;
+      height: auto;
+      &:nth-child(2) {
+        background-color: white;
+      }
+    }
+    h3 {
+      margin-top: 1rem;
+    }
+  }
+  .kurs {
+    padding: 1rem;
+    span {
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+    img {
+      width: 90vw;
+      height: auto;
+      margin-bottom: 1rem;
+    }
+    div {
+      background-color: rgba(0, 0, 0, 0.8);
+      align-items: flex-start;
+      padding: 0.5rem;
+    }
+  }
+}
