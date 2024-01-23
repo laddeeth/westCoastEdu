@@ -3,8 +3,10 @@ import { createKursCard } from './dom.js';
 
 const initPage = async () => {
   const kurser = await getAll('http://localhost:3000/kursData');
+  const main = document.querySelector('main');
+
   kurser.forEach((kurs) => {
-    createKursCard(kurs);
+    main.append(createKursCard(kurs));
   });
 };
 

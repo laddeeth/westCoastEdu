@@ -53,6 +53,12 @@ const createHeaderOne = (text) => {
   return h1;
 };
 
+const createHeaderThree = (text) => {
+  let h3 = document.createElement('h3');
+  h3.innerHTML = text;
+  return h3;
+};
+
 const createParagraph = (text) => {
   let p = document.createElement('p');
   p.append(text);
@@ -73,17 +79,22 @@ const createImg = (imgData) => {
   for (const [key, value] of Object.entries(imgData)) {
     img.setAttribute(key, value);
   }
-  clg;
+  return img;
 };
 
 const createKursCard = (kurs) => {
   let div = createDiv();
-  createImg({
-    src: kurs.kursBild,
-    alt: kurs.kursTitel,
-    width: 100,
-    height: 100,
-  });
+  div.append(
+    createImg({
+      src: imgURL + kurs.kursBild,
+      alt: kurs.kursTitel,
+      width: 100,
+      height: 100,
+    }),
+    createHeaderThree(kurs.kursTitel),
+    createParagraph(kurs.beskrivning)
+  );
+  return div;
 };
 
 export { drawHeader, drawFooter, createKursCard };
