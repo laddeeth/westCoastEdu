@@ -1,3 +1,5 @@
+import { isLoggedIn, doLogin } from './auth.js';
+
 const imgURL = '/img/';
 
 const drawHeader = () => {
@@ -12,13 +14,53 @@ const drawHeader = () => {
   header.append(
     createNavigation(links),
     createHeaderOne('<a href="/">WestCoast Education</a>'),
-    createSpan('')
+    isLoggedIn()
+      ? createSpan('Logged in')
+      : createFontAwesome(['fa-solid', 'fa-right-to-bracket'])
   );
+  header.lastChild.addEventListener('click', () => {
+    location.href = './minasidor.html';
+  });
 };
 
 const drawFooter = () => {
   let footer = document.querySelector('footer');
   footer.append(createParagraph('WestCoast Education 2023 ©'));
+};
+
+const drawLogin = () => {
+  const div = createDiv();
+  const form = document.createElement('form');
+  const label = createLabel('username', 'Användarnamn');
+  const input = createInput('text', 'username', '');
+  const label2 = createLabel('password', 'Lösenord');
+  const input2 = createInput('password', 'password', '');
+  const button = createInput('button', 'login', 'Logga in');
+  button.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (doLogin(input.value, input2.value)) {
+    } else {
+    }
+  });
+  form.append(label, input, label2, input2, button);
+  div.append(form);
+  return div;
+};
+
+const createLabel = (target, text) => {
+  const label = document.createElement('label');
+  label.append(text);
+  label.setAttribute('for', target);
+  return label;
+};
+
+const createInput = (type, name, value) => {
+  const input = document.createElement('input');
+  input.setAttribute('type', type);
+  input.setAttribute('id', name);
+  input.setAttribute('name', name);
+  input.setAttribute('value', value);
+  return input;
 };
 
 const createNavigation = (links) => {
@@ -129,4 +171,4 @@ const createKursPage = (kurs) => {
   return div;
 };
 
-export { drawHeader, drawFooter, createKursCard, createKursPage };
+export { drawHeader, drawFooter, createKursCard, createKursPage, drawLogin };

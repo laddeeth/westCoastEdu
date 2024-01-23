@@ -34,7 +34,7 @@ header {
   i {
     font-size: 2rem;
     color: $fontcolorprimary;
-    background-color: $bgcolorprimary;
+    background-color: rgba(0, 0, 0, 0);
   }
   h1 {
     font-size: 1rem;
@@ -124,6 +124,24 @@ footer {
     div {
       background-color: rgba(0, 0, 0, 0.8);
       align-items: flex-start;
+      padding: 0.5rem;
+    }
+  }
+}
+
+#minasidor {
+  div form {
+    display: flex;
+    flex-direction: column;
+    label {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+    input {
+      font-size: 1.5rem;
+    }
+    input[type='button'],
+    label {
+      margin-top: 0.5rem;
       padding: 0.5rem;
     }
   }
