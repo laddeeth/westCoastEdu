@@ -2,6 +2,16 @@ import { isLoggedIn, doLogin } from './auth.js';
 
 const imgURL = '/img/';
 
+const drawMinSidaUser = (user) => {
+  const div = createDiv();
+  const h3 = createHeaderThree('Hejsan ' + user.namn + '!');
+  const p = createParagraph('');
+  user.bokningar.length > 0
+    ? p.append('Har kurser')
+    : p.append('Har inga kurser');
+  div.append(h3, p);
+  return div;
+};
 const drawHeader = () => {
   let links = [
     { href: '/', text: 'Start' },
@@ -177,4 +187,11 @@ const createKursPage = (kurs) => {
   return div;
 };
 
-export { drawHeader, drawFooter, createKursCard, createKursPage, drawLogin };
+export {
+  drawHeader,
+  drawFooter,
+  createKursCard,
+  createKursPage,
+  drawLogin,
+  drawMinSidaUser,
+};

@@ -1,5 +1,5 @@
 import { isLoggedIn, getCurrentUser } from './auth.js';
-import { drawLogin } from './dom.js';
+import { drawLogin, drawMinSidaUser } from './dom.js';
 
 const main = document.querySelector('main');
 if (isLoggedIn()) {
@@ -7,7 +7,7 @@ if (isLoggedIn()) {
   if (user.isAdmin) {
     console.log('I am admin');
   } else {
-    console.log('I am user');
+    main.append(drawMinSidaUser(user));
   }
 } else {
   main.append(drawLogin());
