@@ -4,7 +4,7 @@
       "id": 1,
       "kursTitel": "JavaScript",
       "kursDagar": 100,
-      "kursUpplagg": "På plats/Distans",
+      "kursUpplagg": "På plats",
       "kursBild": "kurs1.webp",
       "kursStart": "2024-02-01",
       "beskrivning": "Allt om JavaScript",
@@ -50,9 +50,10 @@
       "postNummer": 12345,
       "stad": "Hollywood",
       "epost": "aurelius@gladiator.com",
-      "passWord": "hejsan",
+      "password": "hejsan",
       "telefon": "+112345678",
-      "bokningar": []
+      "bokningar": [],
+      "isAdmin": false
     }
   ]
 }

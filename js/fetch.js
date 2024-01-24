@@ -1,8 +1,8 @@
-const url = 'http://localhost:3000/kursData';
+const url = 'http://localhost:3000';
 
 const getAll = async () => {
   try {
-    const response = await fetch(url);
+    const response = await fetch(url + '/kursData');
 
     if (response.ok) {
       return await response.json();
@@ -16,7 +16,7 @@ const getAll = async () => {
 
 const getCourse = async (id) => {
   try {
-    const response = await fetch(url + `/${id}`);
+    const response = await fetch(url + `/kursData/${id}`);
     if (response.ok) {
       return await response.json();
     } else {
@@ -27,4 +27,18 @@ const getCourse = async (id) => {
   }
 };
 
-export { getAll, getCourse };
+const getUsers = async () => {
+  try {
+    const response = await fetch(url + '/userData');
+
+    if (response.ok) {
+      return await response.json();
+    } else {
+      throw new Error(`${response.status} ${response.statusText}`);
+    }
+  } catch (error) {
+    throw new Error(`Ett fel inträffade i get metoden: ${error}`);
+  }
+};
+
+export { getAll, getCourse, getUsers };

@@ -36,10 +36,12 @@ const drawLogin = () => {
   const label2 = createLabel('password', 'Lösenord');
   const input2 = createInput('password', 'password', '');
   const button = createInput('button', 'login', 'Logga in');
-  button.addEventListener('click', (e) => {
+  button.addEventListener('click', async (e) => {
     e.preventDefault();
-    if (doLogin(input.value, input2.value)) {
+    if (await doLogin(input.value, input2.value)) {
+      location.href = './minasidor.html';
     } else {
+      alert('Fel användarnamn/lösenord');
     }
   });
   form.append(label, input, label2, input2, button);
@@ -156,6 +158,10 @@ const createKursPage = (kurs) => {
   let div2 = createDiv();
   div2.append(
     createHeaderThree(kurs.kursTitel),
+    createSpan('Kod: ' + kurs.id),
+    createSpan('Startdatum: ' + kurs.kursStart),
+    createSpan('Längd(dagar): ' + kurs.kursDagar),
+    createSpan('Upplägg: ' + kurs.kursUpplagg),
     createParagraph(kurs.djupareBeskrivning)
   );
   div.append(

@@ -115,6 +115,7 @@ footer {
       background-color: rgba(0, 0, 0, 0.8);
       padding: 1rem;
       margin-bottom: 1rem;
+      border: solid 0.1rem white;
     }
     img {
       width: 90vw;
@@ -125,6 +126,15 @@ footer {
       background-color: rgba(0, 0, 0, 0.8);
       align-items: flex-start;
       padding: 0.5rem;
+      span {
+        background-color: rgba(0, 0, 0, 0);
+        padding: 0;
+        margin: 0;
+        border: none;
+      }
+      p {
+        margin-top: 1rem;
+      }
     }
   }
 }
