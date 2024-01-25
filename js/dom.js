@@ -119,34 +119,62 @@ const drawKursPage = (kurs) => {
             (arr) => arr[0] == kurs.id && arr[1] == 'På plats'
           )
         ) {
-          div.append('Du är redan bokad På plats på denna kurs');
-          console.log(div.lastChild);
+          const p = createParagraph('Du är bokad på plats på denna kurs');
+          div.append(p);
         } else {
           div.append(
-            createButton('Boka På plats', () => {
-              bookCourse(user, kurs.id, kurs.kursUpplagg);
+            createButton('Boka På plats', async () => {
+              await bookCourse(user, kurs.id, kurs.kursUpplagg);
+              location.reload();
             })
           );
         }
         break;
       case 'På plats/Distans':
-        div.append(
-          createButton('Boka På plats', async () => {
-            await bookCourse(user, kurs.id, 'På plats');
-          })
-        );
-        div.append(
-          createButton('Boka Distans', async () => {
-            await bookCourse(user, kurs.id, 'Distans');
-          })
-        );
+        if (
+          user.bokningar.find(
+            (arr) => arr[0] == kurs.id && arr[1] == 'På plats'
+          )
+        ) {
+          const p = createParagraph('Du är bokad på plats på denna kurs');
+          div.append(p);
+        } else {
+          div.append(
+            createButton('Boka På plats', async () => {
+              await bookCourse(user, kurs.id, 'På plats');
+              location.reload();
+            })
+          );
+        }
+        if (
+          user.bokningar.find((arr) => arr[0] == kurs.id && arr[1] == 'Distans')
+        ) {
+          const p = createParagraph('Du är bokad på distans på denna kurs');
+          div.append(p);
+        } else {
+          div.append(
+            createButton('Boka Distans', async () => {
+              await bookCourse(user, kurs.id, 'Distans');
+              location.reload();
+            })
+          );
+        }
+
         break;
       case 'Distans':
-        div.append(
-          createButton('Boka Distans', async () => {
-            await bookCourse(user, kurs.id, kurs.kursUpplagg);
-          })
-        );
+        if (
+          user.bokningar.find((arr) => arr[0] == kurs.id && arr[1] == 'Distans')
+        ) {
+          const p = createParagraph('Du är bokad på distans på denna kurs');
+          div.append(p);
+        } else {
+          div.append(
+            createButton('Boka På distans', async () => {
+              await bookCourse(user, kurs.id, kurs.kursUpplagg);
+              location.reload();
+            })
+          );
+        }
         break;
     }
   } else {

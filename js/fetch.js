@@ -45,9 +45,25 @@ const getUsers = async (id) => {
 };
 
 const bookCourse = async (user, kursid, typ) => {
-  console.log(user);
+  const course = await getCourse(kursid);
+  course.bokningar.push([user.id, typ]);
+  try {
+    const response = await fetch(url + `/kursData/${kursid}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(course),
+    });
+    if (response.ok) {
+      await response.json();
+    } else {
+      throw new Error(`${response.status} ${response.statusText}`);
+    }
+  } catch (error) {
+    throw new Error(`Ett fel inträffade i update metoden: ${error}`);
+  }
   user.bokningar.push([kursid, typ]);
-  console.log(user);
   try {
     const response = await fetch(url + `/userData/${user.id}`, {
       method: 'PUT',

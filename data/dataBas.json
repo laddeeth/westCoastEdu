@@ -2,6 +2,12 @@
   "kursData": [
     {
       "id": "1",
+      "bokningar": [
+        [
+          "1",
+          "På plats"
+        ]
+      ],
       "kursTitel": "JavaScript",
       "kursDagar": 100,
       "kursUpplagg": "På plats",
@@ -12,6 +18,7 @@
     },
     {
       "id": "2",
+      "bokningar": [],
       "kursTitel": "Solidity",
       "kursDagar": 110,
       "kursUpplagg": "På plats/Distans",
@@ -22,6 +29,7 @@
     },
     {
       "id": "3",
+      "bokningar": [],
       "kursTitel": "HTML",
       "kursDagar": 52,
       "kursUpplagg": "Distans",
@@ -32,6 +40,7 @@
     },
     {
       "id": "4",
+      "bokningar": [],
       "kursTitel": "CSS",
       "kursDagar": 64,
       "kursUpplagg": "Distans",
@@ -54,31 +63,7 @@
       "telefon": "+112345678",
       "bokningar": [
         [
-          "2",
-          "På plats"
-        ],
-        [
           "1",
-          "På plats"
-        ],
-        [
-          "2",
-          "Distans"
-        ],
-        [
-          "1",
-          "På plats"
-        ],
-        [
-          "1",
-          "På plats"
-        ],
-        [
-          "1",
-          "På plats"
-        ],
-        [
-          "2",
           "På plats"
         ]
       ],
