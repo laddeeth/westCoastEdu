@@ -141,8 +141,15 @@ footer {
 
 #minasidor {
   div {
-    background-color: rgba(0, 0, 0, 0.8);
-    padding: 2rem;
+    padding: 1rem;
+    h3,
+    p {
+      padding: 1rem;
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+    a {
+      color: lightgreen;
+    }
   }
   div form {
     display: flex;

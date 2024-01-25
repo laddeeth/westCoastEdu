@@ -1,7 +1,7 @@
 {
   "kursData": [
     {
-      "id": 1,
+      "id": "1",
       "kursTitel": "JavaScript",
       "kursDagar": 100,
       "kursUpplagg": "På plats",
@@ -11,7 +11,7 @@
       "djupareBeskrivning": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..."
     },
     {
-      "id": 2,
+      "id": "2",
       "kursTitel": "Solidity",
       "kursDagar": 110,
       "kursUpplagg": "På plats/Distans",
@@ -21,7 +21,7 @@
       "djupareBeskrivning": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..."
     },
     {
-      "id": 3,
+      "id": "3",
       "kursTitel": "HTML",
       "kursDagar": 52,
       "kursUpplagg": "Distans",
@@ -31,7 +31,7 @@
       "djupareBeskrivning": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..."
     },
     {
-      "id": 4,
+      "id": "4",
       "kursTitel": "CSS",
       "kursDagar": 64,
       "kursUpplagg": "Distans",
@@ -43,7 +43,7 @@
   ],
   "userData": [
     {
-      "id": 1,
+      "id": "1",
       "namn": "Richard",
       "efterNamn": "Harris",
       "adress": "Boulevard 12",
@@ -52,7 +52,36 @@
       "epost": "aurelius@gladiator.com",
       "password": "hejsan",
       "telefon": "+112345678",
-      "bokningar": [],
+      "bokningar": [
+        [
+          "2",
+          "På plats"
+        ],
+        [
+          "1",
+          "På plats"
+        ],
+        [
+          "2",
+          "Distans"
+        ],
+        [
+          "1",
+          "På plats"
+        ],
+        [
+          "1",
+          "På plats"
+        ],
+        [
+          "1",
+          "På plats"
+        ],
+        [
+          "2",
+          "På plats"
+        ]
+      ],
       "isAdmin": false
     }
   ]

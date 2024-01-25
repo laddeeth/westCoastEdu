@@ -1,5 +1,5 @@
 import { getAll, getCourse } from './fetch.js';
-import { createKursCard, createKursPage } from './dom.js';
+import { drawKursCard, drawKursPage } from './dom.js';
 
 const initPage = async () => {
   const searchParams = new URLSearchParams(window.location.search);
@@ -7,12 +7,12 @@ const initPage = async () => {
 
   if (searchParams.has('id')) {
     const kurs = await getCourse(searchParams.get('id'));
-    main.append(createKursPage(kurs));
+    main.append(drawKursPage(kurs));
   } else {
     const kurser = await getAll();
 
     kurser.forEach((kurs) => {
-      main.append(createKursCard(kurs));
+      main.append(drawKursCard(kurs));
     });
   }
 };

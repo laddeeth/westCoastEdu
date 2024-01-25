@@ -1,4 +1,5 @@
-import { isLoggedIn, doLogin } from './auth.js';
+import { isLoggedIn, doLogin, getCurrentUser } from './auth.js';
+import { bookCourse } from './fetch.js';
 
 const imgURL = '/img/';
 
@@ -8,7 +9,8 @@ const drawMinSidaUser = (user) => {
   const p = createParagraph('');
   user.bokningar.length > 0
     ? p.append('Har kurser')
-    : p.append('Har inga kurser');
+    : (p.innerHTML =
+        'Du har tyvärr inte bokat upp dig på några kurser, besök gärna <a href="./kurser.html">sidan för kurser</a> för att säkra en plats.');
   div.append(h3, p);
   return div;
 };
@@ -48,6 +50,7 @@ const drawLogin = () => {
   const button = createInput('button', 'login', 'Logga in');
   button.addEventListener('click', async (e) => {
     e.preventDefault();
+
     if (await doLogin(input.value, input2.value)) {
       location.href = './minasidor.html';
     } else {
@@ -57,6 +60,105 @@ const drawLogin = () => {
   form.append(label, input, label2, input2, button);
   div.append(form);
   return div;
+};
+
+const drawKursCard = (kurs) => {
+  let div = createDiv();
+  div.className = 'kurser';
+  div.append(
+    createImg({
+      src: imgURL + kurs.kursBild,
+      alt: kurs.kursTitel,
+      width: 100,
+      height: 100,
+    }),
+    createHeaderThree(kurs.kursTitel),
+    createParagraph(kurs.beskrivning)
+  );
+  div.addEventListener('click', () => {
+    location.href = `./kurser.html?id=${kurs.id}`;
+  });
+  return div;
+};
+
+const drawKursPage = (kurs) => {
+  let div = createDiv();
+  let fa = createFontAwesome(['fa-solid', 'fa-arrow-left']);
+  let span = createSpan('');
+  span.append(fa, ' Tillbaka till kurser');
+  span.addEventListener('click', () => {
+    location.href = './kurser.html';
+  });
+  div.className = 'kurs';
+
+  let div2 = createDiv();
+  div2.append(
+    createHeaderThree(kurs.kursTitel),
+    createSpan('Kod: ' + kurs.id),
+    createSpan('Startdatum: ' + kurs.kursStart),
+    createSpan('Längd(dagar): ' + kurs.kursDagar),
+    createSpan('Upplägg: ' + kurs.kursUpplagg),
+    createParagraph(kurs.djupareBeskrivning)
+  );
+  div.append(
+    span,
+    createImg({
+      src: imgURL + kurs.kursBild,
+      alt: kurs.kursTitel,
+      width: 100,
+      height: 100,
+    }),
+    div2
+  );
+  if (isLoggedIn()) {
+    const user = JSON.parse(localStorage.user);
+    switch (kurs.kursUpplagg) {
+      case 'På plats':
+        if (
+          user.bokningar.find(
+            (arr) => arr[0] == kurs.id && arr[1] == 'På plats'
+          )
+        ) {
+          div.append('Du är redan bokad På plats på denna kurs');
+          console.log(div.lastChild);
+        } else {
+          div.append(
+            createButton('Boka På plats', () => {
+              bookCourse(user, kurs.id, kurs.kursUpplagg);
+            })
+          );
+        }
+        break;
+      case 'På plats/Distans':
+        div.append(
+          createButton('Boka På plats', async () => {
+            await bookCourse(user, kurs.id, 'På plats');
+          })
+        );
+        div.append(
+          createButton('Boka Distans', async () => {
+            await bookCourse(user, kurs.id, 'Distans');
+          })
+        );
+        break;
+      case 'Distans':
+        div.append(
+          createButton('Boka Distans', async () => {
+            await bookCourse(user, kurs.id, kurs.kursUpplagg);
+          })
+        );
+        break;
+    }
+  } else {
+    console.log('Inte inloggad');
+  }
+  return div;
+};
+const createButton = (text, action) => {
+  const button = document.createElement('button');
+  button.append(text);
+  button.addEventListener('click', action);
+  return button;
 };
 
 const createLabel = (target, text) => {
@@ -136,62 +238,11 @@ const createImg = (imgData) => {
   return img;
 };
 
-const createKursCard = (kurs) => {
-  let div = createDiv();
-  div.className = 'kurser';
-  div.append(
-    createImg({
-      src: imgURL + kurs.kursBild,
-      alt: kurs.kursTitel,
-      width: 100,
-      height: 100,
-    }),
-    createHeaderThree(kurs.kursTitel),
-    createParagraph(kurs.beskrivning)
-  );
-  div.addEventListener('click', () => {
-    location.href = `./kurser.html?id=${kurs.id}`;
-  });
-  return div;
-};
-
-const createKursPage = (kurs) => {
-  let div = createDiv();
-  let fa = createFontAwesome(['fa-solid', 'fa-arrow-left']);
-  let span = createSpan('');
-  span.append(fa, ' Tillbaka till kurser');
-  span.addEventListener('click', () => {
-    location.href = './kurser.html';
-  });
-  div.className = 'kurs';
-
-  let div2 = createDiv();
-  div2.append(
-    createHeaderThree(kurs.kursTitel),
-    createSpan('Kod: ' + kurs.id),
-    createSpan('Startdatum: ' + kurs.kursStart),
-    createSpan('Längd(dagar): ' + kurs.kursDagar),
-    createSpan('Upplägg: ' + kurs.kursUpplagg),
-    createParagraph(kurs.djupareBeskrivning)
-  );
-  div.append(
-    span,
-    createImg({
-      src: imgURL + kurs.kursBild,
-      alt: kurs.kursTitel,
-      width: 100,
-      height: 100,
-    }),
-    div2
-  );
-  return div;
-};
-
 export {
   drawHeader,
   drawFooter,
-  createKursCard,
-  createKursPage,
+  drawKursCard,
+  drawKursPage,
   drawLogin,
   drawMinSidaUser,
 };
