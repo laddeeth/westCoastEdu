@@ -1,7 +1,7 @@
 {
   "kursData": [
     {
-      "id": "1",
+      "id": 1,
       "bokningar": [],
       "kursTitel": "JavaScript",
       "kursDagar": 100,
@@ -12,7 +12,7 @@
       "djupareBeskrivning": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..."
     },
     {
-      "id": "2",
+      "id": 2,
       "bokningar": [],
       "kursTitel": "Solidity",
       "kursDagar": 110,
@@ -23,7 +23,7 @@
       "djupareBeskrivning": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..."
     },
     {
-      "id": "3",
+      "id": 3,
       "bokningar": [],
       "kursTitel": "HTML",
       "kursDagar": 52,
@@ -34,7 +34,7 @@
       "djupareBeskrivning": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..."
     },
     {
-      "id": "4",
+      "id": 4,
       "bokningar": [],
       "kursTitel": "CSS",
       "kursDagar": 64,
@@ -47,7 +47,7 @@
   ],
   "userData": [
     {
-      "id": "1",
+      "id": 1,
       "namn": "Richard",
       "efterNamn": "Harris",
       "adress": "Boulevard 12",

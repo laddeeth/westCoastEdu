@@ -1,4 +1,4 @@
-import { getCurrentUser } from './auth.js';
+import { doLogin, getCurrentUser } from './auth.js';
 const url = 'http://localhost:3000';
 
 const getAll = async () => {
@@ -14,7 +14,10 @@ const getAll = async () => {
     throw new Error(`Ett fel inträffade i get metoden: ${error}`);
   }
 };
-
+const checkUserName = async (username) => {
+  const users = await getUsers();
+  return users.filter((user) => user.epost == username);
+};
 const getCourse = async (id) => {
   try {
     const response = await fetch(url + `/kursData/${id}`);
@@ -134,4 +137,48 @@ const removeCourse = async (kurs) => {
   location.reload();
 };
 
-export { getAll, getCourse, getUsers, bookCourse, removeCourse };
+const doRegister = async (form) => {
+  const formData = new FormData(form);
+  const entries = Object.fromEntries(formData.entries());
+  const hasUser = await checkUserName(entries.epost);
+  if (hasUser.length > 0) {
+    const input = document.querySelector(`input[name="epost"]`);
+    input.classList.add('faulty');
+    alert('Denna e-postadress är redan registrerad.');
+    return;
+  }
+  for (const entry of formData.entries()) {
+    const input = document.querySelector(`input[name="${entry[0]}"]`);
+    input.classList.remove('faulty');
+    if (entry[1].length < 1) {
+      const label = document.querySelector(`label[for="${entry[0]}"]`);
+      const input = document.querySelector(`input[name="${entry[0]}"]`);
+      input.classList.add('faulty');
+      alert(`Du måste fylla i ${label.innerHTML}`);
+      return;
+    }
+  }
+  entries.isAdmin = false;
+  entries.bokningar = [];
+  try {
+    const response = await fetch(url + `/userData`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(entries),
+    });
+
+    if (response.ok) {
+      const result = await response.json();
+      await doLogin(result.epost, result.password);
+      location.href = './minasidor.html';
+    } else {
+      throw new Error(`${response.status} ${response.statusText}`);
+    }
+  } catch (error) {
+    throw new Error(`Ett fel inträffade i add metoden: ${error}`);
+  }
+};
+
+export { getAll, getCourse, getUsers, bookCourse, removeCourse, doRegister };

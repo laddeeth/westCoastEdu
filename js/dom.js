@@ -1,5 +1,5 @@
 import { isLoggedIn, doLogin, getCurrentUser, doLogOut } from './auth.js';
-import { bookCourse, getCourse, removeCourse } from './fetch.js';
+import { bookCourse, getCourse, removeCourse, doRegister } from './fetch.js';
 
 const imgURL = '/img/';
 
@@ -74,7 +74,18 @@ const drawLogin = () => {
       alert('Fel användarnamn/lösenord');
     }
   });
-  form.append(label, input, label2, input2, button);
+  form.append(
+    label,
+    input,
+    label2,
+    input2,
+    button,
+    createButton('Ej medlem? Tryck här för att registrera dig.')
+  );
+  form.lastChild.addEventListener('click', (e) => {
+    e.preventDefault();
+    location.href = '?registrera';
+  });
   div.append(form);
   return div;
 };
@@ -98,6 +109,53 @@ const drawKursCard = (kurs) => {
   return div;
 };
 
+const drawRegister = () => {
+  const div = createDiv();
+  div.append(createParagraph('Fyll i alla fält nedan för att registrera dig.'));
+  div.classList.add('registerDiv');
+  const form = createForm();
+  const label = createLabel('namn', 'Förnamn');
+  const input = createInput('text', 'namn', '');
+  const label2 = createLabel('efterNamn', 'Efternamn');
+  const input2 = createInput('text', 'efterNamn', '');
+  const label3 = createLabel('adress', 'Adress');
+  const input3 = createInput('text', 'adress', '');
+  const label4 = createLabel('postNummer', 'Postnummer');
+  const input4 = createInput('number', 'postNummer', '');
+  const label5 = createLabel('stad', 'Stad');
+  const input5 = createInput('text', 'stad', '');
+  const label6 = createLabel('epost', 'E-Post');
+  const input6 = createInput('email', 'epost', '');
+  const label7 = createLabel('password', 'Lösenord');
+  const input7 = createInput('password', 'password', '');
+  const label8 = createLabel('telefon', 'Telefon');
+  const input8 = createInput('tel', 'telefon', '');
+  const button = createButton('Registrera', (e) => {
+    e.preventDefault();
+    doRegister(form);
+  });
+  form.append(
+    label,
+    input,
+    label2,
+    input2,
+    label3,
+    input3,
+    label4,
+    input4,
+    label5,
+    input5,
+    label6,
+    input6,
+    label7,
+    input7,
+    label8,
+    input8,
+    button
+  );
+  div.append(form);
+  return div;
+};
 const drawKursPage = (kurs) => {
   let div = createDiv();
   let fa = createFontAwesome(['fa-solid', 'fa-arrow-left']);
@@ -215,9 +273,17 @@ const drawKursPage = (kurs) => {
         break;
     }
   } else {
-    console.log('Inte inloggad');
+    div.append(createSpan('Registrera/logga in för att boka denna kurs'));
+    div.lastChild.classList.add('kursregistrera');
+    div.lastChild.addEventListener('click', () => {
+      location.href = './minasidor.html';
+    });
   }
   return div;
+};
+const createForm = () => {
+  const form = document.createElement('form');
+  return form;
 };
 const createButton = (text, action) => {
   const button = document.createElement('button');
@@ -310,4 +376,5 @@ export {
   drawKursPage,
   drawLogin,
   drawMinSidaUser,
+  drawRegister,
 };
