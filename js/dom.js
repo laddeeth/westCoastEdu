@@ -1,5 +1,5 @@
-import { isLoggedIn, doLogin, getCurrentUser } from './auth.js';
-import { bookCourse } from './fetch.js';
+import { isLoggedIn, doLogin, getCurrentUser, doLogOut } from './auth.js';
+import { bookCourse, getCourse, removeCourse } from './fetch.js';
 
 const imgURL = '/img/';
 
@@ -7,10 +7,18 @@ const drawMinSidaUser = (user) => {
   const div = createDiv();
   const h3 = createHeaderThree('Hejsan ' + user.namn + '!');
   const p = createParagraph('');
-  user.bokningar.length > 0
-    ? p.append('Har kurser')
-    : (p.innerHTML =
-        'Du har tyvärr inte bokat upp dig på några kurser, besök gärna <a href="./kurser.html">sidan för kurser</a> för att säkra en plats.');
+  if (user.bokningar.length > 0) {
+    p.append('Du är inskriven i nedanstående kurser');
+    user.bokningar.forEach(async (bokning) => {
+      const course = await getCourse(bokning[0]);
+      div.append(drawKursCard(course));
+      div.lastChild.append(createParagraph(bokning[1]));
+      div.classList.add('hasCourses');
+    });
+  } else {
+    p.innerHTML =
+      'Du har tyvärr inte bokat upp dig på några kurser, besök gärna <a href="./kurser.html">sidan för kurser</a> för att säkra en plats.';
+  }
   div.append(h3, p);
   return div;
 };
@@ -27,12 +35,21 @@ const drawHeader = () => {
     createNavigation(links),
     createHeaderOne('<a href="/">WestCoast Education</a>'),
     isLoggedIn()
-      ? createSpan('Logged in')
-      : createFontAwesome(['fa-solid', 'fa-right-to-bracket'])
+      ? createFontAwesome(['fa-regular', 'fa-user'])
+      : createFontAwesome(['fa-solid', 'fa-right-to-bracket']),
+    isLoggedIn() ? createFontAwesome(['fa-regular', 'fa-circle-xmark']) : ''
   );
-  header.lastChild.addEventListener('click', () => {
-    location.href = './minasidor.html';
-  });
+  if (isLoggedIn()) {
+    header.lastChild.previousSibling.addEventListener('click', () => {
+      location.href = './minasidor.html';
+    });
+    header.lastChild.addEventListener('click', doLogOut);
+  } else {
+    header.lastChild.remove();
+    header.lastChild.addEventListener('click', () => {
+      location.href = './minasidor.html';
+    });
+  }
 };
 
 const drawFooter = () => {
@@ -111,7 +128,7 @@ const drawKursPage = (kurs) => {
     div2
   );
   if (isLoggedIn()) {
-    const user = JSON.parse(localStorage.user);
+    const user = getCurrentUser();
     switch (kurs.kursUpplagg) {
       case 'På plats':
         if (
@@ -120,6 +137,11 @@ const drawKursPage = (kurs) => {
           )
         ) {
           const p = createParagraph('Du är bokad på plats på denna kurs');
+          const button = createButton('Ta bort anmälan', () => {
+            removeCourse([kurs.id, kurs.kursUpplagg]);
+          });
+          button.classList.add('removeCourse');
+          p.append(button);
           div.append(p);
         } else {
           div.append(
@@ -137,6 +159,11 @@ const drawKursPage = (kurs) => {
           )
         ) {
           const p = createParagraph('Du är bokad på plats på denna kurs');
+          const button = createButton('Ta bort anmälan', () => {
+            removeCourse([kurs.id, 'På plats']);
+          });
+          button.classList.add('removeCourse');
+          p.append(button);
           div.append(p);
         } else {
           div.append(
@@ -150,6 +177,11 @@ const drawKursPage = (kurs) => {
           user.bokningar.find((arr) => arr[0] == kurs.id && arr[1] == 'Distans')
         ) {
           const p = createParagraph('Du är bokad på distans på denna kurs');
+          const button = createButton('Ta bort anmälan', () => {
+            removeCourse([kurs.id, 'Distans']);
+          });
+          button.classList.add('removeCourse');
+          p.append(button);
           div.append(p);
         } else {
           div.append(
@@ -166,6 +198,11 @@ const drawKursPage = (kurs) => {
           user.bokningar.find((arr) => arr[0] == kurs.id && arr[1] == 'Distans')
         ) {
           const p = createParagraph('Du är bokad på distans på denna kurs');
+          const button = createButton('Ta bort anmälan', () => {
+            removeCourse([kurs.id, kurs.kursUpplagg]);
+          });
+          button.classList.add('removeCourse');
+          p.append(button);
           div.append(p);
         } else {
           div.append(

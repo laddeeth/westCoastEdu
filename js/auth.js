@@ -15,8 +15,13 @@ const doLogin = async (username, password) => {
   }
 };
 
+const doLogOut = () => {
+  localStorage.removeItem('user');
+  location.reload();
+};
+
 const getCurrentUser = () => {
   return JSON.parse(localStorage.user);
 };
 
-export { isLoggedIn, doLogin, getCurrentUser };
+export { isLoggedIn, doLogin, getCurrentUser, doLogOut };
