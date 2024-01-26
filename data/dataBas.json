@@ -2,12 +2,7 @@
   "kursData": [
     {
       "id": "1",
-      "bokningar": [
-        [
-          "1",
-          "På plats"
-        ]
-      ],
+      "bokningar": [],
       "kursTitel": "JavaScript",
       "kursDagar": 100,
       "kursUpplagg": "På plats",
@@ -61,12 +56,7 @@
       "epost": "aurelius@gladiator.com",
       "password": "hejsan",
       "telefon": "+112345678",
-      "bokningar": [
-        [
-          "1",
-          "På plats"
-        ]
-      ],
+      "bokningar": [],
       "isAdmin": false
     }
   ]
