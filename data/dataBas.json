@@ -14,7 +14,7 @@
     },
     {
       "id": 2,
-      "bokningar": [],
+      "bokningar": [[2, "På plats"]],
       "kursTitel": "Solidity",
       "kursDagar": 110,
       "kursUpplagg": "På plats/Distans",
@@ -73,7 +73,10 @@
       "password": "hejsan",
       "telefon": "072345667",
       "isAdmin": false,
-      "bokningar": [[1, "På plats"]],
+      "bokningar": [
+        [1, "På plats"],
+        [2, "På plats"]
+      ],
       "id": 2
     }
   ]

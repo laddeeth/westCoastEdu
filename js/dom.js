@@ -82,6 +82,16 @@ const drawLogin = () => {
     button,
     createButton('Ej medlem? Tryck här för att registrera dig.')
   );
+  form.addEventListener('keydown', async (e) => {
+    if (e.key == 'Enter') {
+      e.preventDefault();
+      if (await doLogin(input.value, input2.value)) {
+        location.reload();
+      } else {
+        alert('Fel användarnamn/lösenord');
+      }
+    }
+  });
   form.lastChild.addEventListener('click', (e) => {
     e.preventDefault();
     location.href = '?registrera';
