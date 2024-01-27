@@ -223,8 +223,12 @@ footer {
     }
   }
   .adminPage {
+    display: flex;
+    flex-direction: column;
     h2 {
       border-radius: 0;
+    }
+    button {
       margin-bottom: 0.5rem;
     }
     div {

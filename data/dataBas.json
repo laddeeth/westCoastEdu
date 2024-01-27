@@ -64,12 +64,12 @@
       "isAdmin": true
     },
     {
-      "namn": "Dalibor",
-      "efterNamn": "Babic",
+      "namn": "Ladde",
+      "efterNamn": "Ladi",
       "adress": "Ekan 1",
       "postNummer": "12345",
-      "stad": "Katrineholm",
-      "epost": "dalibor@medieinstitutet.se",
+      "stad": "Stockholm",
+      "epost": "ladde@medieinstitutet.se",
       "password": "hejsan",
       "telefon": "072345667",
       "isAdmin": false,
