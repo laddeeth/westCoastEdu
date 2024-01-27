@@ -2,13 +2,14 @@
   "kursData": [
     {
       "id": 1,
-      "bokningar": [],
+      "bokningar": [[2, "På plats"]],
       "kursTitel": "JavaScript",
       "kursDagar": 100,
       "kursUpplagg": "På plats",
       "kursBild": "kurs1.webp",
       "kursStart": "2024-02-01",
       "beskrivning": "Allt om JavaScript",
+      "kursPris": 200,
       "djupareBeskrivning": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..."
     },
     {
@@ -20,6 +21,7 @@
       "kursBild": "kurs2.webp",
       "kursStart": "2025-02-01",
       "beskrivning": "Allt om Solidity",
+      "kursPris": 300,
       "djupareBeskrivning": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..."
     },
     {
@@ -31,6 +33,7 @@
       "kursBild": "kurs3.webp",
       "kursStart": "2026-02-01",
       "beskrivning": "Allt om HTML",
+      "kursPris": 350,
       "djupareBeskrivning": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..."
     },
     {
@@ -42,6 +45,7 @@
       "kursBild": "kurs4.webp",
       "kursStart": "2027-02-01",
       "beskrivning": "Allt om CSS",
+      "kursPris": 420,
       "djupareBeskrivning": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..."
     }
   ],
@@ -57,7 +61,20 @@
       "password": "hejsan",
       "telefon": "+112345678",
       "bokningar": [],
-      "isAdmin": false
+      "isAdmin": true
+    },
+    {
+      "namn": "Dalibor",
+      "efterNamn": "Babic",
+      "adress": "Ekan 1",
+      "postNummer": "12345",
+      "stad": "Katrineholm",
+      "epost": "dalibor@medieinstitutet.se",
+      "password": "hejsan",
+      "telefon": "072345667",
+      "isAdmin": false,
+      "bokningar": [[1, "På plats"]],
+      "id": 2
     }
   ]
 }
